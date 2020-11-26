@@ -51,8 +51,13 @@ void test_apagar_todos(void)
     TEST_ASSERT_EQUAL_HEX16(0x0000, ledsVirtuales);
 }
 
-void test_consultar_estado(void)
+void test_consultar_estado_ON(void)
 {
-    Leds_On(3);
-    TEST_ASSERT_EQUAL_HEX16(4, ledsVirtuales);
+    Leds_On(4);
+    TEST_ASSERT_EQUAL_HEX16(1, estado_led(4));
+}
+
+void test_consultar_estado_OFF(void)
+{
+    TEST_ASSERT_EQUAL_HEX16(0, estado_led(4));
 }
