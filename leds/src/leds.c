@@ -1,5 +1,8 @@
 #include "leds.h"
 
+#define LEDS_ALL_ON 0xFFFF
+#define LEDS_ALL_OFF 0x0000
+
 static uint16_t * direccion;
 
 uint16_t LedToMask(uint8_t led)
