@@ -2,17 +2,12 @@
 
 #define LEDS_ALL_ON 0xFFFF
 #define LEDS_ALL_OFF 0x0000
+#define LED_OFFSET 1
+#define MAX_LED_NUMBER 16
+#define LedToMask(led) (1 << (led-LED_OFFSET))
+
 
 static uint16_t * direccion;
-
-uint16_t LedToMask(uint8_t led)
-{
-    if(led > 16)
-    {
-        return 0;
-    }
-    return (1 << (led-1));
-}
 
 void Leds_Create(uint16_t *puerto)
 {
@@ -42,5 +37,6 @@ void Leds_Off_ALL(void)
 
 uint8_t estado_led(uint8_t led)
 {
-    return (*direccion>>(led - 1)) & 1;   
+    return (*direccion>>(led - LED_OFFSET)) & 1;
+
 }
